@@ -1,6 +1,7 @@
 package com.pucese.juego;
 
 import javax.swing.JFrame;
+import java.awt.*;
 
 public class Window extends JFrame {
 
