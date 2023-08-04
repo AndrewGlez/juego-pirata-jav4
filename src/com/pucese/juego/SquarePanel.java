@@ -5,7 +5,6 @@ import java.awt.*;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class SquarePanel extends JPanel{
     public static final int Squares = 5;
@@ -37,7 +36,7 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-        squareImages[3][1] = new ImageIcon(getClass().getResource("Recursos/pirata.png"));
+        squareImages[3][1] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
 
     }
     
@@ -67,8 +66,12 @@ public class SquarePanel extends JPanel{
 
                 ImageIcon pirata = squareImages[i][j];
                 if (pirata != null) {
-                    Image image = pirata.getImage().getScaledInstance(xOffset, yOffset, Image.SCALE_SMOOTH);
-                    g.drawImage(image, x, y, this);
+                    Image image = pirata.getImage();
+                    int imageWidth = image.getWidth(this);
+                    int imageHeight = image.getHeight(this);
+                    int imageX = x + (side - imageWidth) / 2;
+                    int imageY = y + (side - imageHeight) / 2;
+                    g.drawImage(image, imageX, imageY, this);
                 }
             }
 
