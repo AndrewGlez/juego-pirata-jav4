@@ -11,10 +11,13 @@ public class SquarePanel extends JPanel{
 
     private String[][] squareTexts;
     public ImageIcon [][] squareImages;
+    private Color[][] squareBackgroundColors;
+
 
     public void lettersPosition() {
         squareTexts = new String[Squares][Squares];
         squareImages = new ImageIcon[Squares][Squares];
+        squareBackgroundColors = new Color[Squares][Squares];
 
 
         // Aquí estableces qué cuadros mostrarán el texto:
@@ -38,6 +41,9 @@ public class SquarePanel extends JPanel{
 
         squareImages[3][1] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
         squareImages[3][3] = new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
+        squareBackgroundColors[4][0] = Color.BLACK;
+        squareBackgroundColors[0][4] = Color.BLACK;
+
     }
     
     @Override
@@ -72,6 +78,11 @@ public class SquarePanel extends JPanel{
                     int imageX = x + (side - imageWidth) / 2;
                     int imageY = y + (side - imageHeight) / 2;
                     g.drawImage(image, imageX, imageY, this);
+                }
+                Color bgColor = squareBackgroundColors[i][j];
+                if (bgColor != null) {
+                    g.setColor(bgColor);
+                    g.fillRect(x, y, side, side);
                 }
             }
 
