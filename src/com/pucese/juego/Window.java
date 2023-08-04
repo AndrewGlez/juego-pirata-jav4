@@ -9,9 +9,11 @@ public class Window extends JFrame {
         inicializarTablero();
         add(new SquarePanel());
         Botones botonesPanel = new Botones();
+        nextStep siguientePaso = new nextStep();
 
         // Agrega el panel de botones a la ventana
         add(botonesPanel, BorderLayout.SOUTH);
+        add(siguientePaso, BorderLayout.EAST);
     }
     void inicializarTablero(){
         setBounds(0, 0, 100, 60);
