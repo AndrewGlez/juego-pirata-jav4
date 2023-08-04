@@ -1,18 +1,22 @@
 package com.pucese.juego;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class SquarePanel extends JPanel{
     public static final int Squares = 5;
 
     private String[][] squareTexts;
+    public ImageIcon [][] squareImages;
 
     public void lettersPosition() {
         squareTexts = new String[Squares][Squares];
+        squareImages = new ImageIcon[Squares][Squares];
+
 
         // Aquí estableces qué cuadros mostrarán el texto:
         squareTexts[0][0] = "A";
@@ -33,8 +37,10 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-    }
+        squareImages[3][1] = new ImageIcon(getClass().getResource("Recursos/pirata.png"));
 
+    }
+    
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -57,6 +63,12 @@ public class SquarePanel extends JPanel{
                 String text = squareTexts[i][j];
                 if (text != null) {
                     Text.drawText(g, x, y, side, text);
+                }
+
+                ImageIcon pirata = squareImages[i][j];
+                if (pirata != null) {
+                    Image image = pirata.getImage().getScaledInstance(xOffset, yOffset, Image.SCALE_SMOOTH);
+                    g.drawImage(image, x, y, this);
                 }
             }
 
