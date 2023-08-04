@@ -10,7 +10,8 @@ public class Window extends JFrame {
         add(new SquarePanel());
     }
     void inicializarTablero(){
-        setBounds(0, 0, 600, 400);
+        setBounds(0, 0, 100, 60);
+        //setExtendedState(Frame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Juego: Pirata pata de palo");
         setVisible(true);

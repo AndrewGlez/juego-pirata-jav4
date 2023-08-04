@@ -37,7 +37,7 @@ public class SquarePanel extends JPanel{
         squareTexts[1][4] = "A";
 
         squareImages[3][1] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
-
+        squareImages[3][3] = new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
     }
     
     @Override
