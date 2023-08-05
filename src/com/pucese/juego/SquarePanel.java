@@ -2,27 +2,50 @@ package com.pucese.juego;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class SquarePanel extends JPanel{
-    public int x = 1;
-    public int y = 1;
+    Random rnd = new Random();
+    public int pirataX = 1;
+    public int pirataY = 1;
+    public int tesoroX = rnd.nextInt(1, 3);
+    public int tesoroY = rnd.nextInt(1, 3);
+
+
+    public int getTesoroX() {
+        return tesoroX;
+    }
+
+    public void setTesoroX(int tesoroX) {
+        this.tesoroX = tesoroX;
+    }
+
+    public int getTesoroY() {
+        return tesoroY;
+    }
+
+    public void setTesoroY(int tesoroY) {
+        this.tesoroY = tesoroY;
+    }
+
+
     public static final int Squares = 5;
 
     private String[][] squareTexts;
     public ImageIcon [][] squareImages;
     private Color[][] squareBackgroundColors;
 
-    public void setX(int x){
-        this.x = x;
+    public void setPirataX(int x){
+        this.pirataX = x;
     }
-    public void setY(int y){
-        this.y = y;
+    public void setPirataY(int y){
+        this.pirataY = y;
     }
-    public int getX(){
-        return x;
+    public int getPirataX(){
+        return pirataX;
     }
-    public int getY(){
-        return y;
+    public int getPirataY(){
+        return pirataY;
     }
 
     public void lettersPosition() {
@@ -50,9 +73,9 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-        squareImages[x][y] = 
+        squareImages[pirataX][pirataY] =
             new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
-        squareImages[3][3] = 
+        squareImages[tesoroX][tesoroY] =
             new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
             
         squareBackgroundColors[4][0] = Color.BLACK;

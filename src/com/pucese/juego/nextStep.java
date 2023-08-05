@@ -43,15 +43,30 @@ public class nextStep extends JPanel {
         int num = turnos();
 
         if(num == 1){
-            squarePanel.setY(squarePanel.getY() + 1);
+            squarePanel.setPirataY(squarePanel.getPirataY() + 1);
         } else if (num == 2) {
-            squarePanel.setY(squarePanel.getY() - 1);
+            squarePanel.setPirataY(squarePanel.getPirataY() - 1);
         } else if (num == 3) {
-            squarePanel.setX(squarePanel.getX() + 1);
+            squarePanel.setPirataX(squarePanel.getPirataX() + 1);
         } else if(num == 4){
-            squarePanel.setX(squarePanel.getX() - 1);
+            squarePanel.setPirataX(squarePanel.getPirataX() - 1);
         }
-        
+
+        if(squarePanel.getPirataX() > 3 || squarePanel.getPirataY() > 3
+                || squarePanel.getPirataY() == 0 || squarePanel.getPirataX() == 0){
+            squarePanel.lettersPosition();
+            squarePanel.repaint();
+            JOptionPane.showMessageDialog(null, "Perdiste");
+            return;
+        };
+
+        if (squarePanel.getPirataX() == squarePanel.tesoroX
+                && squarePanel.getPirataY() == squarePanel.getTesoroY()){
+            squarePanel.lettersPosition();
+            squarePanel.repaint();
+            JOptionPane.showMessageDialog(null, "Ganaste");
+            return;
+        }
         squarePanel.lettersPosition();
         squarePanel.repaint();
     }
