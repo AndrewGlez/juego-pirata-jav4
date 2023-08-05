@@ -7,11 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SquarePanel extends JPanel{
+    public static int x=1;
+    public static int y=1;
     public static final int Squares = 5;
 
     private String[][] squareTexts;
     public ImageIcon [][] squareImages;
     private Color[][] squareBackgroundColors;
+
 
 
     public void lettersPosition() {
@@ -39,7 +42,7 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-        squareImages[3][1] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
+        squareImages[x][y] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
         squareImages[3][3] = new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
         squareBackgroundColors[4][0] = Color.BLACK;
         squareBackgroundColors[0][4] = Color.BLACK;
