@@ -42,7 +42,7 @@ public class nextStep extends JPanel {
     }
     public int turnos(){
         Random pasos = new Random();
-        int si = pasos.nextInt(1,4);
+        int si = pasos.nextInt(3) + 1;
         return si;
     }
     public void avanzar(){
@@ -57,6 +57,7 @@ public class nextStep extends JPanel {
         else if(num==4){
             squarePanel.setX(squarePanel.getX() - 1);
         }
+        squarePanel.lettersPosition();
         squarePanel.repaint();
     }
 }
