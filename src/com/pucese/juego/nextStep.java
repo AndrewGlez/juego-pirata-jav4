@@ -24,7 +24,10 @@ public class nextStep extends JPanel {
 
         siguientePaso.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {avanzar();}
+            public void actionPerformed(ActionEvent e) {
+                avanzar();
+                squarePanel.setI(1);
+            }
         });
 
         siguientePaso.setPreferredSize(new Dimension(200, 50));
@@ -69,8 +72,8 @@ public class nextStep extends JPanel {
             squarePanel.lettersPosition();
             squarePanel.repaint();
             JOptionPane.showMessageDialog(null, "El pirata encontró el tesoro.");
-            return;
         }
+
         squarePanel.lettersPosition();
         squarePanel.repaint();
     }

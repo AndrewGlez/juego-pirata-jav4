@@ -5,6 +5,11 @@ import java.awt.*;
 import java.util.Random;
 
 public class SquarePanel extends JPanel{
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int i = 0;
     Random rnd = new Random();
     public int pirataX = rnd.nextInt(1, 3);
     public int pirataY = rnd.nextInt(1, 3);
@@ -73,8 +78,9 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-        while (getPirataX() == getTesoroX()
-                && getPirataY() == getTesoroY()){
+
+        while ((getPirataX() == getTesoroX()
+                && getPirataY() == getTesoroY()) && i == 0){
             Random rnd = new Random();
             setPirataX(rnd.nextInt(1, 3));
             setPirataY(rnd.nextInt(1, 3));
@@ -115,6 +121,7 @@ public class SquarePanel extends JPanel{
                 if (text != null) {
                     Text.drawText(g, x, y, side, text);
                 }
+
 
                 ImageIcon pirata = squareImages[i][j];
                 if (pirata != null) {
