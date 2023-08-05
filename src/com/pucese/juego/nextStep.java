@@ -10,53 +10,48 @@ public class nextStep extends JPanel {
     private SquarePanel squarePanel;
     
     public nextStep(SquarePanel squarePanel){
-        // Llama al constructor de la superclase con BorderLayout
+
         super();
+
+        // Hace accesible squarePanel
         this.squarePanel = squarePanel;
 
-        // Crea un panel para el botón "jugar" con FlowLayout alineado a la derecha
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        // Crea el botón "jugar"
         JButton siguientePaso = new JButton("Siguiente Paso");
 
-        // Agrega un ActionListener al botón
         siguientePaso.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                avanzar();
-                // Este método se ejecutará cuando se haga clic en el botón "Jugar".
-                // Aquí puedes agregar la lógica del juego o llamar a un método desde la clase principal.
-            }
+            public void actionPerformed(ActionEvent e) {avanzar();}
         });
 
-        // Ajusta el tamaño del botón
         siguientePaso.setPreferredSize(new Dimension(200, 50));
         siguientePaso.setBackground(Color.yellow);
 
-        // Agrega el botón al panel
         buttonPanel.add(siguientePaso);
 
-        // Agrega el panel con el botón al panel principal (this)
         add(buttonPanel);
     }
+
     public int turnos(){
         Random pasos = new Random();
-        int si = pasos.nextInt(3) + 1;
-        return si;
+        int i = pasos.nextInt(3) + 1;
+        return i;
     }
+
     public void avanzar(){
         int num = turnos();
-        if(num==1){
+
+        if(num == 1){
             squarePanel.setY(squarePanel.getY() + 1);
-        } else if (num==2) {
+        } else if (num == 2) {
             squarePanel.setY(squarePanel.getY() - 1);
-        } else if (num==3) {
+        } else if (num == 3) {
             squarePanel.setX(squarePanel.getX() + 1);
-        }
-        else if(num==4){
+        } else if(num == 4){
             squarePanel.setX(squarePanel.getX() - 1);
         }
+        
         squarePanel.lettersPosition();
         squarePanel.repaint();
     }

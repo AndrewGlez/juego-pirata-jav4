@@ -12,7 +12,6 @@ public class SquarePanel extends JPanel{
     public ImageIcon [][] squareImages;
     private Color[][] squareBackgroundColors;
 
-
     public void setX(int x){
         this.x = x;
     }
@@ -25,6 +24,7 @@ public class SquarePanel extends JPanel{
     public int getY(){
         return y;
     }
+
     public void lettersPosition() {
         squareTexts = new String[Squares][Squares];
         squareImages = new ImageIcon[Squares][Squares];
@@ -50,8 +50,11 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-        squareImages[x][y] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
-        squareImages[3][3] = new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
+        squareImages[x][y] = 
+            new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
+        squareImages[3][3] = 
+            new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
+            
         squareBackgroundColors[4][0] = Color.BLACK;
         squareBackgroundColors[0][4] = Color.BLACK;
 
@@ -96,8 +99,6 @@ public class SquarePanel extends JPanel{
                     g.fillRect(x, y, side, side);
                 }
             }
-
         }
     }
-
 }
