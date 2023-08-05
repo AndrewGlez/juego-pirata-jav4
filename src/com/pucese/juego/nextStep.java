@@ -7,9 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class nextStep extends JPanel {
-    public nextStep(){
+    private SquarePanel squarePanel;
+    
+    public nextStep(SquarePanel squarePanel){
         // Llama al constructor de la superclase con BorderLayout
         super();
+        this.squarePanel = squarePanel;
 
         // Crea un panel para el botón "jugar" con FlowLayout alineado a la derecha
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -39,19 +42,21 @@ public class nextStep extends JPanel {
     }
     public int turnos(){
         Random pasos = new Random();
-        int si=pasos.nextInt(1,4);
+        int si = pasos.nextInt(1,4);
         return si;
     }
     public void avanzar(){
-        if(turnos()==1){
-            SquarePanel.y+=1;
-        } else if (turnos()==2) {
-            SquarePanel.y-=1;
-        } else if (turnos()==3) {
-            SquarePanel.x+=1;
+        int num = turnos();
+        if(num==1){
+            squarePanel.setY(squarePanel.getY() + 1);
+        } else if (num==2) {
+            squarePanel.setY(squarePanel.getY() - 1);
+        } else if (num==3) {
+            squarePanel.setX(squarePanel.getX() + 1);
         }
-        else if(turnos()==4){
-            SquarePanel.x-=1;
+        else if(num==4){
+            squarePanel.setX(squarePanel.getX() - 1);
         }
+        squarePanel.repaint();
     }
 }

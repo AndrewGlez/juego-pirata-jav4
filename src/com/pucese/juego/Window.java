@@ -7,16 +7,17 @@ public class Window extends JFrame {
 
     public Window(){
         inicializarTablero();
-        add(new SquarePanel());
+        SquarePanel squarePanel = new SquarePanel();
         Botones botonesPanel = new Botones();
-        nextStep siguientePaso = new nextStep();
+        nextStep siguientePaso = new nextStep(squarePanel);
+        add(squarePanel);
 
         // Agrega el panel de botones a la ventana
         add(botonesPanel, BorderLayout.SOUTH);
         add(siguientePaso, BorderLayout.EAST);
     }
     void inicializarTablero(){
-        setBounds(0, 0, 100, 60);
+        setBounds(0, 0, 600, 800);
         //setExtendedState(Frame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Juego: Pirata pata de palo");

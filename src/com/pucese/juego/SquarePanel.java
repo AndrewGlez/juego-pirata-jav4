@@ -2,13 +2,10 @@ package com.pucese.juego;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.JButton;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SquarePanel extends JPanel{
-    public static int x=1;
-    public static int y=1;
+    public int x = 1;
+    public int y = 1;
     public static final int Squares = 5;
 
     private String[][] squareTexts;
@@ -16,7 +13,18 @@ public class SquarePanel extends JPanel{
     private Color[][] squareBackgroundColors;
 
 
-
+    public void setX(int x){
+        this.x = x;
+    }
+    public void setY(int y){
+        this.y = y;
+    }
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
     public void lettersPosition() {
         squareTexts = new String[Squares][Squares];
         squareImages = new ImageIcon[Squares][Squares];
@@ -42,7 +50,7 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
-        squareImages[x][y] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
+        squareImages[getX()][getY()] = new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
         squareImages[3][3] = new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
         squareBackgroundColors[4][0] = Color.BLACK;
         squareBackgroundColors[0][4] = Color.BLACK;

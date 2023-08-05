@@ -1,7 +1,6 @@
 package com.pucese.juego;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Objects;
 
 public class Pirata {
