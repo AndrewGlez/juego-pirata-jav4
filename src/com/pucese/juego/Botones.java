@@ -9,6 +9,13 @@ import java.util.Random;
 public class Botones extends JPanel{
     JPanel buttonPanel;
     JButton jugarButton;
+    // Agrega una referencia a la clase Window
+    private Window window;
+
+    // Agrega un método para establecer la referencia a la clase Window
+    public void setWindow(Window window) {
+        this.window = window;
+    }
     private SquarePanel squarePanel;
         public Botones(SquarePanel squarePanel){
             // Llama al constructor de la superclase con BorderLayout
@@ -50,7 +57,10 @@ public class Botones extends JPanel{
             jugarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    // Genera las posiciones aleatorias
 
+
+                    window.reiniciarTablero();
                 }
             });
 
