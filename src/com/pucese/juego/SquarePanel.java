@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class SquarePanel extends JPanel{
     Random rnd = new Random();
-    public int pirataX = 1;
-    public int pirataY = 1;
+    public int pirataX = rnd.nextInt(1, 3);
+    public int pirataY = rnd.nextInt(1, 3);
     public int tesoroX = rnd.nextInt(1, 3);
     public int tesoroY = rnd.nextInt(1, 3);
 
@@ -73,10 +73,19 @@ public class SquarePanel extends JPanel{
         squareTexts[4][1] = "A";
         squareTexts[1][4] = "A";
 
+        while (getPirataX() == getTesoroX()
+                && getPirataY() == getTesoroY()){
+            Random rnd = new Random();
+            setPirataX(rnd.nextInt(1, 3));
+            setPirataY(rnd.nextInt(1, 3));
+        }
+
         squareImages[pirataX][pirataY] =
             new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));
         squareImages[tesoroX][tesoroY] =
             new ImageIcon(getClass().getResource("Recursos/tesoro_128.png"));
+
+
             
         squareBackgroundColors[4][0] = Color.BLACK;
         squareBackgroundColors[0][4] = Color.BLACK;

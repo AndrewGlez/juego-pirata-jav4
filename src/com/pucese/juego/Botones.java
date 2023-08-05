@@ -4,24 +4,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Botones extends JPanel{
-        public Botones(){
+    JPanel buttonPanel;
+    JButton jugarButton;
+    private SquarePanel squarePanel;
+        public Botones(SquarePanel squarePanel){
             // Llama al constructor de la superclase con BorderLayout
             super();
 
+
             // Crea un panel para el botón "jugar" con FlowLayout alineado a la derecha
-            JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+            buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
             // Crea el botón "jugar"
-            JButton jugarButton = new JButton("Jugar");
+            jugarButton = new JButton("Jugar");
 
             // Agrega un ActionListener al botón
             jugarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // Este método se ejecutará cuando se haga clic en el botón "Jugar".
-                    // Aquí puedes agregar la lógica del juego o llamar a un método desde la clase principal.
+
+                    Random rnd = new Random();
+                    squarePanel.setPirataX(rnd.nextInt(1, 3));
+                    squarePanel.setPirataY(rnd.nextInt(1, 3));
+                    squarePanel.setTesoroX(rnd.nextInt(1, 3));
+                    squarePanel.setTesoroY(rnd.nextInt(1, 3));
                 }
             });
 
@@ -37,6 +46,13 @@ public class Botones extends JPanel{
 
             // Crea el botón "salir"
             JButton salirButton = new JButton("Salir");
+
+            jugarButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            });
 
             // Agrega un ActionListener al botón
             salirButton.addActionListener(new ActionListener() {

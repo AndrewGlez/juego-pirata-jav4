@@ -9,7 +9,7 @@ public class Window extends JFrame {
     public Window(){
         inicializarTablero();
         SquarePanel squarePanel = new SquarePanel();
-        Botones botonesPanel = new Botones();
+        Botones botonesPanel = new Botones(squarePanel);
         nextStep siguientePaso = new nextStep(squarePanel);
         add(squarePanel, BorderLayout.CENTER);
 

@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class nextStep extends JPanel {
+    JButton siguientePaso;
+    JPanel buttonPanel;
     private SquarePanel squarePanel;
     
     public nextStep(SquarePanel squarePanel){
@@ -16,9 +18,9 @@ public class nextStep extends JPanel {
         // Hace accesible squarePanel
         this.squarePanel = squarePanel;
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        JButton siguientePaso = new JButton("Siguiente Paso");
+        siguientePaso = new JButton("Siguiente Paso");
 
         siguientePaso.addActionListener(new ActionListener() {
             @Override
@@ -54,17 +56,19 @@ public class nextStep extends JPanel {
 
         if(squarePanel.getPirataX() > 3 || squarePanel.getPirataY() > 3
                 || squarePanel.getPirataY() == 0 || squarePanel.getPirataX() == 0){
+            siguientePaso.setEnabled(false);
             squarePanel.lettersPosition();
             squarePanel.repaint();
-            JOptionPane.showMessageDialog(null, "Perdiste");
+            JOptionPane.showMessageDialog(null, "El pirata se ahogó.");
             return;
         };
 
         if (squarePanel.getPirataX() == squarePanel.tesoroX
                 && squarePanel.getPirataY() == squarePanel.getTesoroY()){
+            siguientePaso.setEnabled(false);
             squarePanel.lettersPosition();
             squarePanel.repaint();
-            JOptionPane.showMessageDialog(null, "Ganaste");
+            JOptionPane.showMessageDialog(null, "El pirata encontró el tesoro.");
             return;
         }
         squarePanel.lettersPosition();
