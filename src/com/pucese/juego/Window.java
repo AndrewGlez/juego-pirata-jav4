@@ -8,16 +8,20 @@ import java.util.Random;
 public class Window extends JFrame {
 
     public Window(){
-        inicializarTablero();
+
         SquarePanel squarePanel = new SquarePanel();
         Botones botonesPanel = new Botones(squarePanel);
         botonesPanel.setWindow(this);
         nextStep siguientePaso = new nextStep(squarePanel);
         add(squarePanel, BorderLayout.CENTER);
 
+
         // Agrega el panel de botones a la ventana
         add(botonesPanel, BorderLayout.SOUTH);
         add(siguientePaso, BorderLayout.EAST);
+
+        inicializarTablero();
+
     }
     void inicializarTablero(){
         setBounds(0, 0, 800, 700);

@@ -11,10 +11,10 @@ public class SquarePanel extends JPanel{
 
     public int i = 0;
     Random rnd = new Random();
-    public int pirataX = rnd.nextInt(1, 3);
-    public int pirataY = rnd.nextInt(1, 3);
-    public int tesoroX = rnd.nextInt(1, 3);
-    public int tesoroY = rnd.nextInt(1, 3);
+    public int pirataX = rnd.nextInt(1, 4);
+    public int pirataY = rnd.nextInt(1, 4);
+    public int tesoroX = rnd.nextInt(1, 4);
+    public int tesoroY = rnd.nextInt(1, 4);
 
 
     public int getTesoroX() {
@@ -82,8 +82,8 @@ public class SquarePanel extends JPanel{
         while ((getPirataX() == getTesoroX()
                 && getPirataY() == getTesoroY()) && i == 0){
             Random rnd = new Random();
-            setPirataX(rnd.nextInt(1, 3));
-            setPirataY(rnd.nextInt(1, 3));
+            setPirataX(rnd.nextInt(1, 4));
+            setPirataY(rnd.nextInt(1, 4));
         }
 
         squareImages[pirataX][pirataY] =
@@ -131,6 +131,7 @@ public class SquarePanel extends JPanel{
                     int imageX = x + (side - imageWidth) / 2;
                     int imageY = y + (side - imageHeight) / 2;
                     g.drawImage(image, imageX, imageY, this);
+                    setI(1);
                 }
                 Color bgColor = squareBackgroundColors[i][j];
                 if (bgColor != null) {
