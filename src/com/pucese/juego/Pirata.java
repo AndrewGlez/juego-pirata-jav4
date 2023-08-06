@@ -9,6 +9,5 @@ public class Pirata {
     public Pirata(){
     pirata = new ImageIcon(Objects.requireNonNull((getClass().getResource("Recursos/pirata.png"))));
     tesoro = new ImageIcon(Objects.requireNonNull((getClass().getResource("Recursos/tesoro.png"))));
-
     }
 }
