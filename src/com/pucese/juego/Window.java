@@ -10,6 +10,7 @@ public class Window extends JFrame {
     public Window(){
 
         SquarePanel squarePanel = new SquarePanel();
+        LabelSiguiente siguiente = new LabelSiguiente(squarePanel);
         Botones botonesPanel = new Botones(squarePanel);
         botonesPanel.setWindow(this);
         nextStep siguientePaso = new nextStep(squarePanel);
@@ -19,6 +20,8 @@ public class Window extends JFrame {
         // Agrega el panel de botones a la ventana
         add(botonesPanel, BorderLayout.SOUTH);
         add(siguientePaso, BorderLayout.EAST);
+        add(siguiente, BorderLayout.LINE_START);
+
 
         inicializarTablero();
 

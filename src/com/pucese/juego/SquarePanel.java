@@ -53,11 +53,13 @@ public class SquarePanel extends JPanel{
         return pirataY;
     }
 
-    public void lettersPosition() {
+    public int lettersPosition() {
         squareTexts = new String[Squares][Squares];
         squareImages = new ImageIcon[Squares][Squares];
         squareBackgroundColors = new Color[Squares][Squares];
-
+        Random rnd = new Random();
+        int aleatorio;
+        aleatorio = rnd.nextInt(1,4);
 
         // Aquí estableces qué cuadros mostrarán el texto:
         squareTexts[0][0] = "A";
@@ -81,9 +83,10 @@ public class SquarePanel extends JPanel{
 
         while ((getPirataX() == getTesoroX()
                 && getPirataY() == getTesoroY()) && i == 0){
-            Random rnd = new Random();
-            setPirataX(rnd.nextInt(1, 4));
-            setPirataY(rnd.nextInt(1, 4));
+
+
+            setPirataX(aleatorio);
+            setPirataY(aleatorio);
         }
 
         squareImages[pirataX][pirataY] =
@@ -95,7 +98,7 @@ public class SquarePanel extends JPanel{
             
         squareBackgroundColors[4][0] = Color.BLACK;
         squareBackgroundColors[0][4] = Color.BLACK;
-
+        return aleatorio;
     }
     
     @Override
