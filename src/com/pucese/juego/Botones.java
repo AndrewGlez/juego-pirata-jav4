@@ -51,8 +51,7 @@ public class Botones extends JPanel{
             // Crea un panel para el botón "salir" con FlowLayout alineado a la izquierda
             JPanel exitButtonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-            // Crea el botón "salir"
-            JButton salirButton = new JButton("Salir");
+
 
             jugarButton.addActionListener(new ActionListener() {
                 @Override
@@ -63,6 +62,9 @@ public class Botones extends JPanel{
                     window.reiniciarTablero();
                 }
             });
+
+            // Crea el botón "salir"
+            JButton salirButton = new JButton("Salir");
 
             // Agrega un ActionListener al botón
             salirButton.addActionListener(new ActionListener() {
