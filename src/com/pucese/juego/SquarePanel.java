@@ -52,6 +52,11 @@ public class SquarePanel extends JPanel{
     public int getPirataY(){
         return pirataY;
     }
+    public int aleatorio(){
+        Random pasos = new Random();
+        int i = pasos.nextInt(1, 4) + 1;
+        return i;
+    }
 
     public void lettersPosition() {
         squareTexts = new String[Squares][Squares];
@@ -79,11 +84,11 @@ public class SquarePanel extends JPanel{
         squareTexts[1][4] = "A";
 
 
-       /* while ((getPirataX() == getTesoroX()
+       while ((getPirataX() == getTesoroX()
                 && getPirataY() == getTesoroY()) && i == 0){
             setPirataX(aleatorio());
             setPirataY(aleatorio());
-        }*/
+        }
 
         squareImages[pirataX][pirataY] =
             new ImageIcon(getClass().getResource("Recursos/pirata_128.png"));

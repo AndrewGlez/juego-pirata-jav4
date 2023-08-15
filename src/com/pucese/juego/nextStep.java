@@ -10,29 +10,30 @@ public class nextStep extends JPanel {
     JButton siguientePaso;
     JPanel buttonPanel;
     private SquarePanel squarePanel;
-    private JLabel directionLabel;
-    private String nextDirection;
-
+    private JLabel direccionLabel;
+    int aleatorio;
 
 
     public nextStep(SquarePanel squarePanel){
-
         super();
-        directionLabel = new JLabel();
-        directionLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        aleatorio = turnos();
 
         // Hace accesible squarePanel
         this.squarePanel = squarePanel;
 
         buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        direccionLabel = new JLabel("Dirección del pirata: ");
+        buttonPanel.add(direccionLabel);
+
 
         siguientePaso = new JButton("Siguiente Paso");
 
 
         siguientePaso.addActionListener(e -> {
-            avanzar();
+
+            avanzar(aleatorio);
             squarePanel.setI(1);
-            directionLabel.setText(nextDirection);
+
         });
 
         siguientePaso.setPreferredSize(new Dimension(200, 50));
@@ -41,39 +42,20 @@ public class nextStep extends JPanel {
         buttonPanel.add(siguientePaso);
 
         add(buttonPanel);
-        buttonPanel.add(directionLabel, BorderLayout.SOUTH);
+
+
     }
 
     public int turnos(){
         Random pasos = new Random();
-        int i = pasos.nextInt(1,4);
+        int i = pasos.nextInt(1, 4) + 1;
         return i;
     }
-    public void avanzar(){
-        int aleatorio = turnos();
-        int tmp = aleatorio;
-
-        switch (aleatorio) {
-            case 1:
-                nextDirection = "South";
-                break;
-            case 2:
-                nextDirection = "North";
-                break;
-            case 3:
-                nextDirection = "East";
-                break;
-            case 4:
-                nextDirection = "West";
-                break;
-            default:
-                nextDirection = "Unknown";
-                break;
-        }
+    public void avanzar(int sig){
+        aleatorio = turnos();
 
 
-
-        switch (tmp) {
+        switch (sig) {
             case 1:
                 squarePanel.setPirataY(squarePanel.getPirataY() + 1);
                 break;
@@ -89,21 +71,6 @@ public class nextStep extends JPanel {
             default:
                 break;
         }
-
-
-        /*if(num == 1){
-            squarePanel.setPirataY(squarePanel.getPirataY() + 1);
-            direction.setText("Norte");
-        } else if (num == 2) {
-            squarePanel.setPirataY(squarePanel.getPirataY() - 1);
-            direction.setText("Sur");
-        } else if (num == 3) {
-            squarePanel.setPirataX(squarePanel.getPirataX() + 1);
-            direction.setText("Este");
-        } else if(num == 4){
-            squarePanel.setPirataX(squarePanel.getPirataX() - 1);
-            direction.setText("Oeste");
-        }*/
 
         if(squarePanel.getPirataX() > 3 || squarePanel.getPirataY() > 3
                 || squarePanel.getPirataY() == 0 || squarePanel.getPirataX() == 0){
@@ -124,5 +91,24 @@ public class nextStep extends JPanel {
 
         squarePanel.lettersPosition();
         squarePanel.repaint();
+        String direccion = direccionPirata(aleatorio);
+        direccionLabel.setText("Dirección del pirata: " + direccion);
     }
+    public String direccionPirata(int aleatorio) {
+        switch (aleatorio) {
+            case 1:
+                return "Sur";
+            case 2:
+                return "Norte";
+            case 3:
+                return "Este";
+            case 4:
+                return "Oeste";
+            default:
+                return "Desconocida";
+        }
+    }
+
+
+
 }
